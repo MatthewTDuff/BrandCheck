@@ -1,29 +1,16 @@
 Project for the Madhack 2019 Hackathon.
 
-The theme of the event was environmental consciousness. We knew that companies,
-like Nestle, were very environmentally irresponsible but it could also be difficult to
-determine what products Nestle was actually selling.
+The theme of the event was environmental consciousness. We knew that companies, like Nestle, were very environmentally irresponsible but it could also be difficult to determine what products Nestle was actually selling.
 
-We designed an application that would scan the product's barcode,
-determine the company that owned the product via a cloud-based SQL database with over 100k products,
-and display a list of relevant news headlines about that company.
+We designed an application that would scan the product's barcode, determine the company that owned the product via a cloud-based SQL database with over 100k products, and display a list of relevant news headlines about that company.
 The major lesson we wanted to take away was the pros and cons of microservice based design.
 
-Within this repository is all the code that was deployed to Google Cloud Platform.
-We used Docker and Kubernetes for the deployment process.
+Within this repository is all the code that was deployed to Google Cloud Platform. We used Docker and Kubernetes for the deployment process.
 
-Ryan designed the web scraper in python to scrape results from Google news.
-We filtered responses from Google based on what we thought to be reliable news sources.
-With additional time, we wanted to add a "weight" to each result depending on how major of a news source it was
-and how recent the article was.
-I (Matt) then put a flask front-end on it,
-found a compatible container that interacted with our web scraper properly with the least overhead,
-and deployed it to GCP. We then were able to properly route traffic to it via a URL which we no longer maintain.
+Ryan designed the web scraper in python to scrape results from Google news. We filtered responses from Google based on what we thought to be reliable news sources. With additional time, we wanted to add a "weight" to each result depending on how major of a news source it was and how recent the article was.
+I (Matt) then put a flask front-end on it, found a compatible container that interacted with our web scraper properly with the least overhead, and deployed it to GCP. We then were able to properly route traffic to it via a URL which we no longer maintain.
 
-The other half of this repository is a Java program developed with Spring that acts
-as a RESTful API in order to access the SQL database of products. It's very light on code
-as Spring does most of the heavy lifting here. If we were to go back in time we'd make the
-variables for connecting to the database easier to manipulate. This was then successfully
- deployed to GCP with Kubernetes and connected to the SQL database (which was also based in GCP).
+The other half of this repository is a Java program developed with Spring that acts as a RESTful API in order to access the SQL database of products. It's very light on code as Spring does most of the heavy lifting here.
+If we were to go back in time we'd make the variables for connecting to the database easier to manipulate. This was then successfully deployed to GCP with Kubernetes and connected to the SQL database (which was also based in GCP).
 
 Unfortunately, I (Matt) no longer have access to the Android front-end.
